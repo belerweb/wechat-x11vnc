@@ -22,6 +22,7 @@ sleep 5
 
 # 启动 x11vnc
 xauth generate :1 . trusted
+x11vnc -storepasswd $VNC_PASSWORD /etc/x11vnc.pass
 x11vnc -xkb -noxrecord -noxfixes -noxdamage -display $DISPLAY -auth guess -rfbauth /etc/x11vnc.pass -forever -bg -rfbport $VNC_PORT -bg -o /var/log/x11vnc.log
 
 # 启动websockify，将WebSocket连接转发到x11vnc
