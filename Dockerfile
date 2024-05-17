@@ -10,8 +10,7 @@ RUN apt-get update && \
     find /usr/share/doc -type f -delete && \
     find /usr/share/man -type f -delete
 
-RUN x11vnc -storepasswd 12345678 /etc/x11vnc.pass && \
-    touch /root/.Xauthority
+RUN touch /root/.Xauthority
 
 # 克隆noVNC和websockify
 RUN update-ca-certificates && \
@@ -43,6 +42,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 ENV DISPLAY=:1 \
     VNC_PORT=5900 \
-    VNC_RESOLUTION=1024x768x16
+    VNC_RESOLUTION=1024x768x16 \
+    VNC_PASSWORD=12345678
 
 EXPOSE 6080
